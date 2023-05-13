@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TempatWisataController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +47,26 @@ Route::post('/admin/kegiatan/actionBuat', [AdminController::class,'userCreateAct
 Route::get('/admin/kegiatan', [AdminController::class,'userViewKegiatan']) -> name('userViewKegiatan');
 Route::get('/admin/kegiatan/buat', [AdminController::class,'userCreateKegiatan']) -> name('userCreateKegiatan');
 Route::get('/admin/kegiatan/{id}', [AdminController::class,'userUpdateKegiatan']) -> name('updateKegiatan');
+
+
+//admin produk
+Route::post('/admin/produk/actionUpdate/{id}', [AdminController::class,'userUpdateActionProduk']) -> name('userUpdateActionProduk');
+Route::get('/admin/produk/actionDelete/{id}', [AdminController::class,'userDeleteActionProduk']) -> name('userDeleteActionProduk');
+Route::post('/admin/produk/actionBuat', [AdminController::class,'userCreateActionProduk']) -> name('userCreateActionProduk');
+Route::get('/admin/produk', [AdminController::class,'userViewProduk']) -> name('userViewProduk');
+Route::get('/admin/produk/buat', [AdminController::class,'userCreateProduk']) -> name('userCreateProduk');
+Route::get('/admin/produk/{id}', [AdminController::class,'userUpdateProduk']) -> name('updateProduk');
+
+//admin tiket
+Route::post('/admin/tiket/actionUpdate/{id}', [AdminController::class,'userUpdateActionTiket']) -> name('userUpdateActionTiket');
+Route::get('/admin/tiket/actionDelete/{id}', [AdminController::class,'userDeleteActionTiket']) -> name('userDeleteActionTiket');
+Route::get('/admin/tiket', [AdminController::class,'userViewTiket']) -> name('userViewTiket');
+Route::get('/admin/tiket/{id}', [AdminController::class,'userUpdateTiket']) -> name('updateTiket');
+
+//paymentGateAway
+//admin tiket
+Route::get('/payment', [PaymentController::class,'payment']);
+
+
+//home
+Route::get('/', [HomeController::class,'home']);

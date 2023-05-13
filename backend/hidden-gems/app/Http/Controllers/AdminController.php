@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\tempatPariwisata;
-use App\Models\Kegiatan;
 use Session;
+use App\Models\Kegiatan;
+use App\Models\Produk;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+
 class AdminController extends Controller
 {
     public function userView(){
@@ -122,8 +124,8 @@ class AdminController extends Controller
                 'description' => ['required'],
                 'harga' => ['required'],
                 'waktu' => ['required'],
-                'tempat_pariwisata_id' => ['required'],
-                'rating' => ['required']
+                'rating' => ['required'],
+                'tempat_pariwisata_id' => ['required']
             ]);
     
             
@@ -183,6 +185,109 @@ class AdminController extends Controller
             Session::flash('message1', 'Kegiatan berhasil dikirim!');
     
             return redirect('/admin/kegiatan');
+        }
+
+        //PRODUK
+        public function userViewProduk(){
+            $produks = DB::table('produks')->get();
+            return view('admin/adminViewProduk',  ['produks' => $produks]);
+        }
+        public function userUpdateProduk($id){
+            $produks = DB::table('produks') -> where('id', $id) ->get();
+            $tempat_wisatas = DB::table('tempat_pariwisatas')->get();
+            return view('admin/adminDetailProduk',  ['produks' => $produks, 'edited' => true, 'tempat_pariwisatas' => $tempat_wisatas]);
+        }
+    
+        public function userDeleteActionProduk($id){
+            // Menghapus data user dengan id tertentu
+            DB::table('produks')->where('id', $id)->delete();
+    
+            return redirect("/admin/produk");
+        }
+    
+    
+        public function userUpdateActionProduk(Request $request, $id){
+            $validatedData = $request->validate([
+                'name' => ['required'],
+                'description' => ['required'],
+                'harga' => ['required'],
+                'rating' => ['required'],
+                'tempat_pariwisata_id' => ['required']
+            ]);
+    
+            
+    
+            $produk = Produk::find($id);
+            $produk->name =  $request -> input('name');
+            $produk->description = $request -> input('description');
+            $produk->harga = $request -> input('harga');
+            $produk->rating = $request -> input('rating');
+            $produk->tempat_pariwisata_id = $request -> input('tempat_pariwisata_id');
+            if ($request -> image_post){
+                $path = $request->file('image_post')->store('public/produk');
+                $url = Storage::url($path);
+                $file = new File;
+                $file->path = $path;
+                $file->url = $url;
+                $produk->image_post =$file -> path;
+            }
+            $produk->save();
+    
+            return redirect('/admin/produk');
+        }
+        public function userCreateProduk(){
+            $tempat_wisatas = DB::table('tempat_pariwisatas')->get();
+            return view('admin/adminDetailProduk' , ['tempat_pariwisatas'=>$tempat_wisatas ,'edited' => false]);
+        }
+        public function userCreateActionProduk(Request $request){
+            $validatedData = $request->validate([
+                'name' => ['required'],
+                'description' => ['required'],
+                'harga' => ['required'],
+                'rating' => ['required'],
+                'tempat_pariwisata_id' => ['required'],
+                'image_post' => ['required']
+            ]);
+    
+            $path = $request->file('image_post')->store('public/produk');
+            $url = Storage::url($path);
+            $file = new File;
+            $file->path = $path;
+            $file->url = $url;
+    
+            Produk::create([
+                'name' => $request -> input('name'),
+                'description' => $request -> input('description'),
+                'harga' => $request -> input('harga'),
+                'rating' => $request -> input('rating'),
+                'tempat_pariwisata_id' => $request -> input('tempat_pariwisata_id'),
+                'image_post' => $file -> path, 
+    
+            ]);
+    
+    
+            Session::flash('message1', 'Produk berhasil dikirim!');
+    
+            return redirect('/admin/produk');
+        }
+
+
+        //TIKET
+        public function userViewTiket(){
+            $tikets = DB::table('tikets')->get();
+            return view('admin/adminViewTiket',  ['tikets' => $tikets]);
+        }
+        public function userUpdateTiket($id){
+            $tikets = DB::table('tikets') -> where('id', $id) ->get();
+            $kegiatans = DB::table('kegiatans')->get();
+            return view('admin/adminDetailTiket',  ['tikets' => $tikets, 'edited' => true, 'kegiatans' => $kegiatans]);
+        }
+    
+        public function userDeleteActionTiket($id){
+            // Menghapus data user dengan id tertentu
+            DB::table('tikets')->where('id', $id)->delete();
+    
+            return redirect("/admin/tiket");
         }
     
 }

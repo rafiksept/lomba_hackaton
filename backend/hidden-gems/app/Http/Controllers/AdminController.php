@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function userView(){
-        $users = DB::table('users')->get();
-        return view('admin/adminView',  ['users' => $users]);
+        $tempat_wisatas = DB::table('tempat_pariwisatas')->get();
+        return view('admin/adminView',  ['tempat_wisatas' => $tempat_wisatas]);
     }
     public function userUpdate($id){
-        $users = DB::table('users') -> where('id', $id) ->get();
-        return view('admin/adminUpdate',  ['users' => $users]);
+        $users = DB::table('tempat_pariwisatas') -> where('id', $id) ->get();
+        return view('admin/adminUpdate',  ['tempat_wisatas' => $tempat_wisatas]);
     }
 }

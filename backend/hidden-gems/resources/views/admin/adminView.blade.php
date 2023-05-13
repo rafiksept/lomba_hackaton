@@ -55,26 +55,26 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Waktu Pembuatan</th>
-                    <th scope="col">Waktu Update</th>
+                    <th scope="col">Desa</th>
+                    <th scope="col">Kota</th>
+                    <th scope="col">Provinsi</th>
                     <th scope="col">Action</th>
                   </tr>
             </thead>
             <tbody>
+                @foreach ($tempat_wisatas as $tempat_wisata)
                 <tr>
-                    @foreach ($users as $user)
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $user -> name}}</td>
-                    <td>{{ $user -> email }}</td>
-                    <td>{{ $user -> created_at }}</td>
-                    <td>{{ $user -> updated_at }}</td>
+                    <td>{{ $tempat_wisata -> name}}</td>
+                    <td>{{ $tempat_wisata -> desa}}</td>
+                    <td>{{ $tempat_wisata -> kota }}</td>
+                    <td>{{ $tempat_wisata -> provinsi }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-primary"><a href="/tempat-wisata/{{$tempat_wisata -> id}}">Update</a></button>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </td>
+                </tr>
                     @endforeach
-                  </tr>
     
             </tbody>
           </table>

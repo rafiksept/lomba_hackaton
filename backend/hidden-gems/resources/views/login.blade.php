@@ -24,10 +24,25 @@
     </nav>
     <div class="container py-md-5">
         <div class="row">
-            <div class="col-md-6 text-center"><img class="img-fluid w-100" src="assets/img/illustrations/1.png"></div>
+            <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{{ asset('img/illustrations/1.png') }}"></div>
             <div class="col-md-5 col-xl-4 text-center text-md-start" style="margin-top: 90px;">
                 <h2 class="display-6 fw-bold mb-5" style="padding-bottom: 0px;margin-bottom: 43px;margin-top: 5px;font-weight: bold;font-family: Poppins, sans-serif;"><span style="margin-top: 14px;margin-bottom: 14px;padding-bottom: 0px;padding-top: 0px;font-family: Inter, sans-serif;font-weight: bold;"><strong>Login</strong></span></h2>
-                <form method="post" style="margin-top: -30px;">
+                <form method="post" action="{{ route('actionLogin') }}" style="margin-top: -30px;">
+                    @csrf
+                    @if (session('error'))
+                    <p class="error-login">{{ session('error') }}</p>
+                    @endif
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                        <ul>
+                            <li><p class="error-login">{{ $error }}</p></li>
+                        </ul>
+                        
+                        
+                        @endforeach
+                    </div>
+                    @endif
                     <div class="mb-3"><input class="shadow form-control" type="email" name="email" placeholder="Email" style="font-family: Poppins, sans-serif;"></div>
                     <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Password" style="font-family: Poppins, sans-serif;"></div>
                     <div class="mb-5"><button class="btn btn-primary shadow" type="submit" style="font-family: Poppins, sans-serif;">Log in</button></div>

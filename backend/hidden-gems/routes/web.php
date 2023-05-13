@@ -30,5 +30,5 @@ Route::get('/login', [LoginController::class, 'login']) -> name('login');
 Route::post('/actionLogin', [LoginController::class, 'actionLogin']) -> name('actionLogin');
 
 // admin 
-Route::get('/admin/user', [AdminController::class,'userView']) -> name('userView');
-Route::get('/admin/userUpdate/{id}', [AdminController::class,'userUpdate']) -> name('update');
+Route::get('/admin/tempat-wisata', [AdminController::class,'userView']) -> name('userView');
+Route::get('/admin/tempat-wisata/{id}', [AdminController::class,'userUpdate']) -> name('update');

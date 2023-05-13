@@ -15,13 +15,13 @@
         <p class="error-login">{{ session('error') }}</p>
         @endif
         @if (count($errors) > 0)
-     <div class="alert alert-danger">
-          @foreach ($errors->all() as $error)
-          <p class="error-login">{{ $error }}</p>
-          
-          @endforeach
-     </div>
-     @endif
+        <div class="alert alert-danger">
+              @foreach ($errors->all() as $error)
+              <p class="error-login">{{ $error }}</p>
+              
+              @endforeach
+        </div>
+        @endif
         <div class="txt_field">
           <input type="email" name="email" required >
           <span></span>

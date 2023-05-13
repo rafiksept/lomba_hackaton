@@ -70,7 +70,7 @@
                     <td>{{ $tempat_wisata -> kota }}</td>
                     <td>{{ $tempat_wisata -> provinsi }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary"><a href="/tempat-wisata/{{$tempat_wisata -> id}}">Update</a></button>
+                        <button type="button" class="btn btn-primary"><a href="/admin/tempat-wisata/{{$tempat_wisata -> id}}" style = "text-decoration: none; color:white;">Update</a></button>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </td>
                 </tr>

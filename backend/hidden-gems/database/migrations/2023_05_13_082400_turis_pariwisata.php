@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('provinsi');
             $table->string('location_map');
             $table-> longText('image_post');
+            $table->timestamps();
         });
     }
 

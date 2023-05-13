@@ -9,5 +9,5 @@ class tempatPariwisata extends Model
 {
     use HasFactory;
 
-    protected $fillable =['name','description','desa','kota','provinsi','location_map','image_post'];
+    protected $fillable =['name','description','desa','kota','provinsi','location_map','image_post','updated_at','created_at'];
 }

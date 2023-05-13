@@ -66,7 +66,7 @@ Route::get('/admin/tiket/{id}', [AdminController::class,'userUpdateTiket']) -> n
 
 //paymentGateAway
 //admin tiket
-Route::get('/payment', [PaymentController::class,'payment']);
+Route::get('/payment/{id}/{pax}', [PaymentController::class,'payment']);
 
 
 //home
@@ -76,3 +76,7 @@ Route::post('/update-location', [HomeController::class,'updateLocation']);
 //kegiatan
 Route::get('/kegiatan/{id}', [KegiatanController::class,'kegiatanView']);
 Route::get('/keranjang', [KegiatanController::class,'keranjangView']);
+
+
+Route::get('/keranjangAction/{id}', [KegiatanController::class,'keranjangAction']);
+Route::get('/checkout/{id}/{pax}', [KegiatanController::class,'checkout']);

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
-    public function payment(){
+    public function payment($id, $pax){
+        $kegiatans = DB::table('kegiatans')-> where("id", $id) ->get();
        /*Install Midtrans PHP Library (https://github.com/Midtrans/midtrans-php)
 composer require midtrans/midtrans-php
                               
@@ -30,7 +32,7 @@ require_once dirname(__FILE__) . '/pathofproject/Midtrans.php'; */
 $params = array(
     'transaction_details' => array(
         'order_id' => rand(),
-        'gross_amount' => 10000,
+        'gross_amount' => $kegiatans[0] -> harga * 1.02 * $pax,
     ),
     'customer_details' => array(
         'first_name' => 'rafik',
@@ -42,6 +44,7 @@ $params = array(
 
 $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-return view('payment/payment', ['snapToken' => $snapToken]);
+
+// return view('checkout', ['kegiatans' => $kegiatans, 'pax' => $pax, 'snapToken' => $snapToken]);
     }
 }

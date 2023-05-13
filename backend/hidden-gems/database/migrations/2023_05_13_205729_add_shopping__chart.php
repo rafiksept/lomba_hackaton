@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chart', function (Blueprint $table) {
+        Schema::create('charts', function (Blueprint $table) {
             $table->id();
             $table-> longText('kombinasi_produk');
+            $table -> foreignId('user_id') -> constrained() -> onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -40,10 +40,9 @@
                 <h1 data-aos="fade" data-aos-duration="2000" data-aos-delay="1300" id="heading1" style="font-family: Aclonica, sans-serif;font-weight: bold;font-size: 31px;padding-top: 0px;color: #ffffff;">YOUR TRAVELING FRIEND</h1><a href="#"><button class="btn btn-primary" data-bss-hover-animate="pulse" id="button1" type="button" style="color: rgb(255,0,0);"><img style="width: 20px;height: 20px;transform: rotate(270deg) translateX(2px);" src="{{ asset('img/arrowwhite.gif') }}"><span style="font-family: Aclonica, sans-serif;color: rgb(204,125,5);"><strong>DISCOVER</strong></span><img style="width: 20px;height: 20px;transform: rotate(90deg) translateX(-2px);" src="{{ asset('img/arrowwhite.gif') }}"></button></a>
             </div>
         </div>
-        <div class="container text-center py-5"><div class="filter">
-</div></div>
         <div>
             <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
+                <h1 data-aos="fade" data-aos-duration="2000" data-aos-delay="1300" id="heading1" style="font-family: Aclonica, sans-serif;font-weight: bold;font-size: 31px;padding-top: 0px;color: black;">YOUR DESTINATION</h1>
                 @foreach ($tempat_pariwisatas as $tempat_pariwisata)
                 <div class="col-sm-6 col-lg-4 mb-4" style="position: relative">
                     <div class="card">
@@ -76,6 +75,7 @@
     <div id="empresa" style="padding: 20px;margin: 1px;">
         <div class="container">
             <div class="row">
+                
                 <div class="col-sm-6 col-md-7 col-lg-7">
                     <h1 style="color: rgb(0,0,0);font-family: Aclonica, sans-serif;">Heading</h1>
                     <p style="color: rgb(0,0,0);font-family: Poppins, sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis mauris accumsan, aliquet dui vel, rutrum dolor. Nunc vitae auctor metus. Quisque posuere nibh ut sem tincidunt, quis feugiat elit lobortis. Sed ut fringilla purus. Suspendisse volutpat ex non sem vehicula venenatis ut sed purus. Nunc eget fermentum metus, non consectetur velit. Donec semper leo a tellus posuere mollis. Duis a eleifend metus. Sed viverra enim sit amet mattis viverra. Ut euismod viverra lectus id aliquam. Cras eget odio mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ipsum nulla, vestibulum id diam eu, malesuada malesuada ex. Vestibulum et volutpat mauris. Donec sagittis sem vitae lacinia pellentesque. Ut mattis viverra aliquam. </p>
@@ -145,7 +145,7 @@
           dist = dist * 1.609344; // Konversi ke km
           return dist;
         }
-      </script>
+    </script>
       
     
 </body>

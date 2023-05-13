@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TempatWisataController extends Controller
 {
     public function viewTempatWisata(){
-        $tempat_wisatas = DB::table('tempat_pariwisatas')->get();
-        dump($tempat_wisatas);
+        $tempat_pariwisatas = DB::table('tempat_pariwisatas')->get();
+        return view('tempatWisata', ['tempat_pariwisatas' => $tempat_pariwisatas]);
     }
 }

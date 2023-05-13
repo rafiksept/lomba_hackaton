@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TempatWisataController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -71,3 +72,7 @@ Route::get('/payment', [PaymentController::class,'payment']);
 //home
 Route::get('/', [HomeController::class,'home']);
 Route::post('/update-location', [HomeController::class,'updateLocation']);
+
+//kegiatan
+Route::get('/kegiatan/{id}', [KegiatanController::class,'kegiatanView']);
+Route::get('/keranjang', [KegiatanController::class,'keranjangView']);

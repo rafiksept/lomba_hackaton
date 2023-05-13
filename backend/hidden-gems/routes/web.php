@@ -70,3 +70,4 @@ Route::get('/payment', [PaymentController::class,'payment']);
 
 //home
 Route::get('/', [HomeController::class,'home']);
+Route::post('/update-location', [HomeController::class,'updateLocation']);

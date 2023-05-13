@@ -136,8 +136,16 @@
                   <input name="provinsi"class="form-control"  placeholder="provinsi" >
                 </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Lokasi di Map</label>
-                  <input name="location_map"class="form-control"  placeholder="lokasi di map">
+                  <label >Longitude</label>
+                  <input name="longitude"class="form-control"  placeholder="longitude">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >Latitude</label>
+                  <input name="latitude"class="form-control"  placeholder="latitude">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >jenis</label>
+                  <input name="jenis"class="form-control"  placeholder="jenis">
                 </div>
                 <div class="form-group mb-2 mt-2">
                     <label>Foto Thumbnail</label>

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('desa');
             $table->string('kota');
             $table->string('provinsi');
-            $table->string('location_map');
+            $table->string('longitude');
+            $table->string('latitude');
+            $table->string('jenis');
             $table-> longText('image_post');
             $table->timestamps();
         });

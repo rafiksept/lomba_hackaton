@@ -37,7 +37,9 @@ class AdminController extends Controller
             'desa' => ['required'],
             'kota' => ['required'],
             'provinsi' => ['required'],
-            'location_map' => ['required']
+            'longitude' => ['required'],
+            'latitude' => ['required'],
+            'jenis' => ['required'],
         ]);
 
         
@@ -48,7 +50,9 @@ class AdminController extends Controller
         $tempat_wisata->desa = $request -> input('desa');
         $tempat_wisata->kota = $request -> input('kota');
         $tempat_wisata->provinsi = $request -> input('provinsi');
-        $tempat_wisata->location_map = $request -> input('location_map');
+        $tempat_wisata->longitude = $request -> input('longitude');
+        $tempat_wisata->latitude = $request -> input('latitude');
+        $tempat_wisata->jenis = $request -> input('jenis');
         if ($request -> image_post){
             $path = $request->file('image_post')->store('public/tempatWisata');
             $url = Storage::url($path);
@@ -72,7 +76,9 @@ class AdminController extends Controller
             'desa' => ['required'],
             'kota' => ['required'],
             'provinsi' => ['required'],
-            'location_map' => ['required'],
+            'longitude' => ['required'],
+            'latitude' => ['required'],
+            'jenis' => ['required'],
             'image_post' => ['required']
         ]);
 
@@ -88,7 +94,9 @@ class AdminController extends Controller
             'desa' => $request -> input('desa'),
             'kota' => $request -> input('kota'),
             'provinsi' => $request -> input('provinsi'),
-            'location_map' => $request -> input('location_map'),
+            'longitude' => $request -> input('longitude'),
+            'latitude' => $request -> input('latitude'),
+            'jenis' => $request -> input('jenis'),
             'image_post' => $file -> path, 
 
         ]);

@@ -68,15 +68,60 @@
                  
                   @endforeach
               @endif
+              @if ($edited)
+              <form class="forms-sample"  action="{{route('userUpdateAction',['id' => $tempat_wisatas[0] -> id])}}" method="POST" enctype="multipart/form-data">
+                  
+              @else
               <form class="forms-sample"  action="{{route('userCreateAction')}}" method="POST" enctype="multipart/form-data">
+                  
+              @endif
                 @csrf
+                @if ($edited)
                 <div class="form-group mt-2 mb-2">
                   <label>Name</label>
-                  <input name="name" type="text" class="form-control" placeholder="Name">
+                  <input name="name" type="text" class="form-control" placeholder="{{$tempat_wisatas[0] -> name}}" value="{{$tempat_wisatas[0] -> name}}">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label >Deskripsi</label>
-                    <textarea name="description" class="form-control"  rows="4"></textarea>
+                    <textarea name="description" class="form-control"  rows="4" >{{$tempat_wisatas[0] -> description}}</textarea>
+                  </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >Desa</label>
+                  <input name="desa"class="form-control"  placeholder="{{$tempat_wisatas[0] -> desa}}" value="{{$tempat_wisatas[0] -> desa}}">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >Kota</label>
+                  <input name="kota"class="form-control"  placeholder="{{$tempat_wisatas[0] -> kota}}" value="{{$tempat_wisatas[0] -> kota}}">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >Provinsi</label>
+                  <input name="provinsi"class="form-control"  placeholder="{{$tempat_wisatas[0] -> provinsi}}" value="{{$tempat_wisatas[0] -> provinsi}}">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >Lokasi di Map</label>
+                  <input name="location_map"class="form-control"  placeholder="{{$tempat_wisatas[0] -> location_map}}" value="{{$tempat_wisatas[0] -> location_map}}">
+                </div>
+                <div class="form-group mb-2 mt-2">
+                  @php
+                        $string = $tempat_wisatas[0] -> image_post;
+                        $substring = substr($string, strpos($string, 'public/') + strlen('public/'));
+                    @endphp
+                  <label for="exampleTextarea1">Foto Thumbnail</label>
+                  <br>
+                  <a href="{{ asset('storage/'.$substring) }}">Download File</a>
+                  <br>
+                  <input type="file" name="image_post" class="file-upload-default">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">Kembali</button>
+                @else
+                <div class="form-group mt-2 mb-2">
+                  <label>Name</label>
+                  <input name="name" type="text" class="form-control" placeholder="name">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label >Deskripsi</label>
+                    <textarea name="description" class="form-control"  rows="4" ></textarea>
                   </div>
                 <div class="form-group mt-2 mb-2">
                   <label >Desa</label>
@@ -88,18 +133,20 @@
                 </div>
                 <div class="form-group mt-2 mb-2">
                   <label >Provinsi</label>
-                  <input name="provinsi"class="form-control"  placeholder="provinsi">
+                  <input name="provinsi"class="form-control"  placeholder="provinsi" >
                 </div>
                 <div class="form-group mt-2 mb-2">
                   <label >Lokasi di Map</label>
-                  <input name="location_map"class="form-control"  placeholder="Lokasi di map">
+                  <input name="location_map"class="form-control"  placeholder="lokasi di map">
                 </div>
                 <div class="form-group mb-2 mt-2">
                     <label>Foto Thumbnail</label>
                     <input type="file" name="image_post" class="file-upload-default">
                   </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <button class="btn btn-light">Reset</button>
+                <button class="btn btn-light">Kembali</button>
+                @endif
+                
               </form>
             </div>
           </div>

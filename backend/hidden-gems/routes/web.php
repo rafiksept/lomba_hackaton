@@ -31,7 +31,17 @@ Route::post('/actionLogin', [LoginController::class, 'actionLogin']) -> name('ac
 
 // admin 
 Route::post('/admin/tempat-wisata/actionUpdate/{id}', [AdminController::class,'userUpdateAction']) -> name('userUpdateAction');
+Route::get('/admin/tempat-wisata/actionDelete/{id}', [AdminController::class,'userDeleteAction']) -> name('userDeleteAction');
 Route::post('/admin/tempat-wisata/actionBuat', [AdminController::class,'userCreateAction']) -> name('userCreateAction');
 Route::get('/admin/tempat-wisata', [AdminController::class,'userView']) -> name('userView');
 Route::get('/admin/tempat-wisata/buat', [AdminController::class,'userCreate']) -> name('userCreate');
 Route::get('/admin/tempat-wisata/{id}', [AdminController::class,'userUpdate']) -> name('update');
+
+
+//admin kegiatan
+Route::post('/admin/kegiatan/actionUpdate/{id}', [AdminController::class,'userUpdateActionKegiatan']) -> name('userUpdateActionKegiatan');
+Route::get('/admin/kegiatan/actionDelete/{id}', [AdminController::class,'userDeleteActionKegiatan']) -> name('userDeleteActionKegiatan');
+Route::post('/admin/kegiatan/actionBuat', [AdminController::class,'userCreateActionKegiatan']) -> name('userCreateActionKegiatan');
+Route::get('/admin/kegiatan', [AdminController::class,'userViewKegiatan']) -> name('userViewKegiatan');
+Route::get('/admin/kegiatan/buat', [AdminController::class,'userCreateKegiatan']) -> name('userCreateKegiatan');
+Route::get('/admin/kegiatan/{id}', [AdminController::class,'userUpdateKegiatan']) -> name('updateKegiatan');

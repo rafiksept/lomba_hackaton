@@ -50,74 +50,54 @@
       </div>
 
       <div class="content">
-        <div class="page-header">
-            <h3 class="page-title"> Form Proses Surat Dosen </h3>
-          </div>
-          <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  @if(session('message1'))
-                  <div class="success-message">
-                      {{session('message1')}}
-                  </div>
-                  @endif
-                  @if (count($errors) > 0)
-                      @foreach ($errors->all() as $error)
-                      <ul>
-                        <li class="item-error error-message"> {{ $error }}</li>
+        <button class = "btn btn-success mt-2 mb-2"><a  href="/admin/kegiatan/buat" style="text-decoration:none;color:white;">Buat Kegiatan</a></button>
+          <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Waktu</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Tempat Pariwisata</th>
+                    <th scope="col">Action</th>
+                  </tr>
+            </thead>
+            <tbody>
+                @foreach ($kegiatans as $kegiatan)
+                <tr>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $kegiatan -> name}}</td>
+                    <td>{{ $kegiatan -> harga}}</td>
+                    <td>{{ $kegiatan -> waktu }}</td>
+                    <td>{{ $kegiatan -> rating}}</td>
+                    <td>{{ $kegiatan -> tempat_pariwisata_id}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary"><a href="/admin/kegiatan/{{$kegiatan -> id}}" style = "text-decoration: none; color:white;">Update</a></button>
+                        <button onclick="confirmDelete({{$kegiatan -> id}})"  type="button" class="btn btn-danger">Delete</button>
 
-                      </ul>
-                     
-                      @endforeach
-                  @endif
-                  <form class="forms-sample" method="POST">
-                    @csrf
-                    <div class="form-group mt-2 mb-2">
-                      <label for="exampleInputName1">Name</label>
-                      <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{$user -> name}}">
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                      <label for="exampleInputNIK">NIK</label>
-                      <input name="nik" type="nik" class="form-control" id="exampleInputNIK" placeholder="NIK" value="{{$user -> email}}" disabled>
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                      <label for="exampleInputNIK">No Surat</label>
-                      <input name="no_surat" type="nik" class="form-control" id="exampleInputNIK" placeholder="No Surat">
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                      <label for="exampleSelectGender">Program Studi</label>
-                      <select name="program_studi" class="form-control" id="exampleSelectGender">
-                        <option>Teknologi Sains Data</option>
-                        <option>Rekayasa Nanoteknologi</option>
-                        <option>Teknik Elektro</option>
-                        <option>Teknik Industri</option>
-                        <option>Teknik Robotika dan Kecerdasan Buatan</option>
-                      </select>
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                      <label for="exampleSelectGender">Pilih Tipe Surat</label>
-                      <select name= "tipe_surat" class="form-control" id="exampleSelectGender">
-                        <option>Surat Tugas</option>
-                        <option>Surat SK</option>
-                      </select>
-                    </div>
-                    <div class="form-group mt-2 mb-2">
-                      <label for="exampleTextarea1">Keterangan</label>
-                      <textarea name="keterangan" class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Reset</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+                    </td>
+                </tr>
+                    @endforeach
+    
+            </tbody>
+          </table>
 
       </div>
     
 
-      
+  
+<script>
+  function confirmDelete(id) {
+      if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+          // Jika user menekan tombol OK, lanjutkan dengan menghapus data
+          window.location.href = "/admin/kegiatan/actionDelete/" + id; // Ganti dengan URL untuk menghapus data
+      } else {
+          // Jika user menekan tombol Cancel, batalkan penghapusan
+          return false;
+      }
+  }
+</script>    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 

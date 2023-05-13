@@ -48,7 +48,7 @@
       </div>
 
     <div class="page-header m-2">
-        <h3 class="page-title"> Buat Tempat Wisata </h3>
+        <h3 class="page-title"> Buat Kegiatan </h3>
       </div>
       <div class="row m-2">
         <div class="col-12 grid-margin stretch-card">
@@ -69,41 +69,37 @@
                   @endforeach
               @endif
               @if ($edited)
-              <form class="forms-sample"  action="{{route('userUpdateAction',['id' => $tempat_wisatas[0] -> id])}}" method="POST" enctype="multipart/form-data">
+              <form class="forms-sample"  action="{{route('userUpdateActionKegiatan',['id' => $kegiatans[0] -> id])}}" method="POST" enctype="multipart/form-data">
                   
               @else
-              <form class="forms-sample"  action="{{route('userCreateAction')}}" method="POST" enctype="multipart/form-data">
+              <form class="forms-sample"  action="{{route('userCreateActionKegiatan')}}" method="POST" enctype="multipart/form-data">
                   
               @endif
                 @csrf
                 @if ($edited)
                 <div class="form-group mt-2 mb-2">
                   <label>Name</label>
-                  <input name="name" type="text" class="form-control" placeholder="{{$tempat_wisatas[0] -> name}}" value="{{$tempat_wisatas[0] -> name}}">
+                  <input name="name" type="text" class="form-control" placeholder="{{$kegiatans[0] -> name}}" value="{{$kegiatans[0] -> name}}">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label >Deskripsi</label>
-                    <textarea name="description" class="form-control"  rows="4" >{{$tempat_wisatas[0] -> description}}</textarea>
+                    <textarea name="description" class="form-control"  rows="4" >{{$kegiatans[0] -> description}}</textarea>
                   </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Desa</label>
-                  <input name="desa"class="form-control"  placeholder="{{$tempat_wisatas[0] -> desa}}" value="{{$tempat_wisatas[0] -> desa}}">
+                  <label >Harga</label>
+                  <input name="harga"class="form-control"  placeholder="{{$kegiatans[0] -> harga}}" value="{{$kegiatans[0] -> harga}}">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Kota</label>
-                  <input name="kota"class="form-control"  placeholder="{{$tempat_wisatas[0] -> kota}}" value="{{$tempat_wisatas[0] -> kota}}">
+                  <label >waktu</label>
+                  <input name="waktu"class="form-control"  placeholder="{{$kegiatans[0] -> waktu}}" value="{{$kegiatans[0] -> waktu}}">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Provinsi</label>
-                  <input name="provinsi"class="form-control"  placeholder="{{$tempat_wisatas[0] -> provinsi}}" value="{{$tempat_wisatas[0] -> provinsi}}">
-                </div>
-                <div class="form-group mt-2 mb-2">
-                  <label >Lokasi di Map</label>
-                  <input name="location_map"class="form-control"  placeholder="{{$tempat_wisatas[0] -> location_map}}" value="{{$tempat_wisatas[0] -> location_map}}">
+                  <label >rating</label>
+                  <input name="rating"class="form-control"  placeholder="{{$kegiatans[0] -> rating}}" value="{{$kegiatans[0] -> rating}}">
                 </div>
                 <div class="form-group mb-2 mt-2">
                   @php
-                        $string = $tempat_wisatas[0] -> image_post;
+                        $string = $kegiatans[0] -> image_post;
                         $substring = substr($string, strpos($string, 'public/') + strlen('public/'));
                     @endphp
                   <label for="exampleTextarea1">Foto Thumbnail</label>
@@ -111,6 +107,15 @@
                   <a href="{{ asset('storage/'.$substring) }}">Download File</a>
                   <br>
                   <input type="file" name="image_post" class="file-upload-default">
+                  <div class="form-group">
+                    <label for="tempat_pariwisata_id">Kategori Produk</label>
+                    <select name="tempat_pariwisata_id" id="category_id" class="form-control mb-2 mt-2">
+                        <option value="">-- Pilih Tempat Pariwisata --</option>
+                        @foreach($tempat_pariwisatas as $tempat_pariwisata)
+                            <option value="{{ $tempat_pariwisata->id }}" {{ $tempat_pariwisata->id == $kegiatans[0]->tempat_pariwisata_id ? 'selected' : '' }}>{{ $tempat_pariwisata->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light"></button>
@@ -124,25 +129,28 @@
                     <textarea name="description" class="form-control"  rows="4" ></textarea>
                   </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Desa</label>
-                  <input name="desa"class="form-control"  placeholder="desa">
+                  <label >harga</label>
+                  <input name="harga"class="form-control"  placeholder="harga">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Kota</label>
-                  <input name="kota"class="form-control"  placeholder="kota">
+                  <label >waktu</label>
+                  <input name="waktu"class="form-control"  placeholder="waktu">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Provinsi</label>
-                  <input name="provinsi"class="form-control"  placeholder="provinsi" >
-                </div>
-                <div class="form-group mt-2 mb-2">
-                  <label >Lokasi di Map</label>
-                  <input name="location_map"class="form-control"  placeholder="lokasi di map">
+                  <label >rating</label>
+                  <input name="rating"class="form-control"  placeholder="rating" >
                 </div>
                 <div class="form-group mb-2 mt-2">
                     <label>Foto Thumbnail</label>
+                    <br>
                     <input type="file" name="image_post" class="file-upload-default">
                   </div>
+                  <select name="tempat_pariwisata_id" id="category_id" class="form-control mb-2 mt-2">
+                    <option value="">-- Pilih Kategori --</option>
+                    @foreach($tempat_pariwisatas as $tempat_pariwisata)
+                        <option value="{{ $tempat_pariwisata->id }}">{{ $tempat_pariwisata->name }}</option>
+                    @endforeach
+                </select>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light">Kembali</button>
                 @endif

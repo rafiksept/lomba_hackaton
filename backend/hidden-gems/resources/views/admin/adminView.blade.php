@@ -50,6 +50,7 @@
       </div>
 
       <div class="content">
+        <button class = "btn btn-success mt-2 mb-2"><a  class = "btn btn-success" href="/admin/tempat-wisata/buat" style="text-decoration:none;color:white;">Buat tempat wisata</a></button>
           <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -71,7 +72,8 @@
                     <td>{{ $tempat_wisata -> provinsi }}</td>
                     <td>
                         <button type="button" class="btn btn-primary"><a href="/admin/tempat-wisata/{{$tempat_wisata -> id}}" style = "text-decoration: none; color:white;">Update</a></button>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button onclick="confirmDelete({{$tempat_wisata -> id}})"  type="button" class="btn btn-danger">Delete</button>
+
                     </td>
                 </tr>
                     @endforeach
@@ -82,7 +84,18 @@
       </div>
     
 
-      
+  
+<script>
+  function confirmDelete(id) {
+      if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+          // Jika user menekan tombol OK, lanjutkan dengan menghapus data
+          window.location.href = "/admin/tempat-wisata/actionDelete/" + id; // Ganti dengan URL untuk menghapus data
+      } else {
+          // Jika user menekan tombol Cancel, batalkan penghapusan
+          return false;
+      }
+  }
+</script>    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 

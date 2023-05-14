@@ -7,7 +7,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TempatWisataController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\TiketController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +68,7 @@ Route::get('/admin/tiket/{id}', [AdminController::class,'userUpdateTiket']) -> n
 
 //paymentGateAway
 //admin tiket
-Route::get('/payment/{id}/{pax}', [PaymentController::class,'payment']);
+Route::get('/payment/{id}/{pax}', [PaymentController::class,'payment']) -> middleware('auth');
 
 
 //home
@@ -75,8 +77,14 @@ Route::post('/update-location', [HomeController::class,'updateLocation']);
 
 //kegiatan
 Route::get('/kegiatan/{id}', [KegiatanController::class,'kegiatanView']);
-Route::get('/keranjang', [KegiatanController::class,'keranjangView']);
+Route::get('/keranjang', [KegiatanController::class,'keranjangView']) -> middleware('auth');
 
 
-Route::get('/keranjangAction/{id}', [KegiatanController::class,'keranjangAction']);
-Route::get('/checkout/{id}/{pax}', [KegiatanController::class,'checkout']);
+Route::get('/keranjangAction/{id}', [KegiatanController::class,'keranjangAction']) -> middleware('auth');
+Route::get('/checkout/{id}/{pax}', [KegiatanController::class,'checkout']) -> middleware('auth');
+
+//tiket
+Route::get('/tiket/{nomor}', [TiketController::class,'viewTiket']) -> middleware('auth');
+
+Route::get('/about-us', [AboutController::class,'viewAbout']);
+Route::get('/logout', [LoginController::class, 'logout']) -> name('logout') -> middleware('auth');

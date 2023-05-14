@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
+    <title>Team - Brand</title>
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel&amp;display=swap">
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
     <link rel="stylesheet" href="../../fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="../../fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="../../css/aos.min.css">
+    <link rel="stylesheet" href="../../css/4-Column-Team-Block---Circles.css">
     <link rel="stylesheet" href="../../css/Bold-BS4-Header-with-HTML5-Video-Background.css">
     <link rel="stylesheet" href="../../css/dh-row-text-image-right-responsive.css">
     <link rel="stylesheet" href="../../css/dh-row-titile-text-image-right-1.css">
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="../../css/Masonry-gallery-cards-responsive.css">
     <link rel="stylesheet" href="../../css/Pretty-Footer-.css">
     <link rel="stylesheet" href="../../css/Product-Viewer-1-untitled.css">
+    <link rel="stylesheet" href="../../css/Team-Presentation---2-Persons---Social-Media-Icon.css">
     <link rel="stylesheet" href="../../css/Tricky-Grid---2-Column-on-Desktop--Tablet-Flip-Order-of-12-Column-rows-on-Mobile.css">
 </head>
 
@@ -37,13 +38,12 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto" style="transform: scale(1.14);font-family: Poppins, sans-serif;color: rgba(228,0,0,0.3);">
                     <li class="nav-item"><a class="nav-link" href="/" style="color: rgb(0,0,0);">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/tempat-wisata" style="color: #000000;">Tempat Wisata</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tempat-wisata" style="color: #000000;">Tempat Wisata</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about-us" style="color: rgb(0,0,0);">About Us</a></li>
                 </ul>
                 @if(auth()->check())
                 <a class="btn btn-primary shadow" role="button" href="/keranjang" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Keranjang</a>
-                <a class="btn btn-primary shadow" role="button" href="/logout" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Logout</a>
-                <!-- Tampilkan sesuatu untuk user yang sudah login -->
+                    <!-- Tampilkan sesuatu untuk user yang sudah login -->
                 @else
                     <!-- Tampilkan sesuatu untuk user yang belum login -->
                     <a class="btn btn-primary shadow" role="button" href="/login" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Login</a>
@@ -51,58 +51,52 @@
             </div>
         </div>
     </nav>
-    <main class="page catalog-page">
-        <section class="clean-block clean-catalog dark">
-            <div class="container">
-                <div class="block-heading">
-                    <div class="row mb-4 mb-lg-5" style="margin-top: 48px;margin-bottom: 28px;padding-bottom: 0px;">
-                        <div class="col-md-8 col-xl-6 text-center mx-auto">
-                            <h2 class="fw-bold">Rekomendasi Destinasi</h2>
-                            <p class="text-muted">Temukan Destinasi Wisata Sesuai Keinginan Anda</p>
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row mb-4 mb-lg-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold" style="font-family: Aclonica, sans-serif;font-size: 50.128px;">All Star Talent</h2>
+                    <p style="font-family: Abel, sans-serif;color: rgb(64,70,75);font-size: 34px;">No matter the project, our team can handle it.&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6" style="text-align: center;margin-top: -132px;"><img class="teamprofilepictures" src="../../img/team/fotooo%20chriss.jpg">
+                    <h1 class="text-dark teamprofilenames" style="font-family: Inter, sans-serif;font-weight: bold;font-size: 35px;">Chris Matthew</h1>
+                    <h1 class="teamprofileprofessions" style="font-family: Poppins, sans-serif;font-weight: bold;">CEO</h1>
+                    <div class="row">
+                        <div class="col-sm-6"><img class="teamprofilepictures" src="../../img/team/fotooo%20fildzahh.jpg">
+                            <h1 class="text-dark teamprofilenames" style="font-family: Inter, sans-serif;font-weight: bold;">Fildzah Shahab</h1>
+                            <h1 class="teamprofileprofessions" style="font-family: Poppins, sans-serif;">Manager Teknikal</h1><span></span>
+                        </div>
+                        <div class="col-sm-6"><img class="teamprofilepictures" src="../../img/team/20211226_195819-removebg-preview.jpg" width="229" height="229">
+                            <h1 class="text-dark teamprofilenames" style="font-family: Inter, sans-serif;font-weight: bold;">Netri Alia Rahmi</h1>
+                            <h1 class="teamprofileprofessions" style="font-family: Poppins, sans-serif;">Manager Produk</h1>
                         </div>
                     </div>
-                </div>
-                <div class="content">
                     <div class="row">
-                        <div class="col-md-9">
-                            <div class="products">
-                                <div>
-                                    <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
-                                        @foreach ($tempat_pariwisatas as $tempat_pariwisata)
-                                        <div class="col-sm-6 col-lg-4 mb-4">
-                                            <div class="card">
-                                                @php
-                                                $string = $tempat_pariwisata -> image_post;
-                                                $substring = substr($string, strpos($string, 'public/') + strlen('public/'));
-                                            @endphp
-                                                <picture type="" srcset=""><img class="card-img-top p-3" src="{{ asset('storage/'.$substring) }}" alt="" style="border-radius: 24px;object-fit: cover; height:300px;"></picture>
-                                                <div class="card-body">
-                                                    <h5 class="card-title" style="font-family: Aclonica, sans-serif;font-weight: bold;">{{$tempat_pariwisata -> name}}</h5>
-                                                    <p class="card-text text-muted" style="font-family: Poppins, sans-serif;">{{  Illuminate\Support\Str::limit($tempat_pariwisata -> description, $limit = 100, $end = '...') }}</p>
-                                                    <p class="fw-bold text-dark mb-2 hasil-perbandingan" style="text-align: right;color: var(--bs-danger);font-family: Abel, sans-serif;font-size: 20px;font-weight: bold;" id = "">Loading...</p>
-                                                    <p class="fw-bold text-dark mb-2" style="text-align: right;color: var(--bs-danger);font-family: Abel, sans-serif;font-size: 18px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span><img src="../../img/star.svg" style="width: 23px;"><span style="color: rgb(0, 0, 0);">4.0/5</span></p><button class="btn btn-primary" type="button" style="padding-left: 37px;transform: scale(0.75);margin-top: 3px;margin-left: -10px;"><a style="text-decoration: none;color:white;" href="/kegiatan/{{$tempat_pariwisata -> id}}">&nbsp;Explore</a></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                            
-                                        @endforeach
-                              
-                                    </div><script async="" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
-                                </div>
-                            </div>
+                        <div class="col-sm-6"><img class="teamprofilepictures" src="../../img/team/foto_rafik.jpg">
+                            <h1 class="text-dark teamprofilenames" style="font-family: Inter, sans-serif;font-weight: bold;">Rafik Septiana</h1>
+                            <h1 class="teamprofileprofessions" style="font-family: Poppins, sans-serif;">Developer</h1><span></span>
+                        </div>
+                        <div class="col-sm-6"><img class="teamprofilepictures" src="../../img/team/Foto%20Square.jpg" width="229" height="229">
+                            <h1 class="text-dark teamprofilenames" style="font-family: Inter, sans-serif;font-weight: bold;">Juan Alberto</h1>
+                            <h1 class="teamprofileprofessions" style="font-family: Poppins, sans-serif;">Developer</h1>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
     <div id="empresa" style="padding: 20px;margin: 1px;">
         <footer style="background: rgb(60,151,163);">
             <div class="row">
                 <div class="col-sm-6 col-md-4 footer-navigation">
                     <h3><a href="#">Lokalinaja</a><img data-aos="fade" data-aos-duration="2500" data-aos-delay="700" id="logoimage-2" src="../../img/logo%201.png" style="padding-top: 0px;margin: 36px 0px 0px;margin-top: 2px;width: 49px;transform: scale(2.01);margin-left: 50px;"></h3>
                     <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                    <p class="company-name">Company Name © 2015 </p>
                 </div>
                 <div class="col-sm-6 col-md-4 footer-contacts">
                     <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
@@ -133,43 +127,6 @@
     <script src="../../js/Ludens---Index-v2-with-Backend--Frontend-Filters-Ludens---1-Index-Table-with-Search--Sort-Filters-v20.js"></script>
     <script src="../../js/Product-Viewer-1-3.1.1-jquery.min..js"></script>
     <script src="../../js/Product-Viewer-1-untitled.js"></script>
-    <script>
-        // Mendapatkan latitude dan longitude user sekarang
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var userLat = position.coords.latitude;
-          var userLng = position.coords.longitude;
-          var hitung = 0;
-          // Melakukan perulangan untuk setiap data latitude dan longitude dari database
-          @foreach($tempat_pariwisatas as $tempat_pariwisata)
-            var dLat = {{ $tempat_pariwisata->latitude }};
-            var dLng = {{ $tempat_pariwisata->longitude }};
-      
-            // Menghitung jarak antara lokasi user sekarang dan lokasi pada database
-            var distance = calculateDistance(userLat, userLng, dLat, dLng);
-      
-            // Memeriksa apakah jaraknya kurang dari 1 km
-            var documentJarak = document.querySelectorAll(".hasil-perbandingan");
-            documentJarak[hitung].innerHTML = Math.round(distance,0) + " Km From You";
-            hitung++
-            documentJarak.innerHTML = Math.round(distance,0) + " Km From You";
-          @endforeach
-        });
-      
-        // Fungsi untuk menghitung jarak antara dua titik
-        function calculateDistance(lat1, lon1, lat2, lon2) {
-          var radlat1 = Math.PI * lat1/180;
-          var radlat2 = Math.PI * lat2/180;
-          var theta = lon1-lon2;
-          var radtheta = Math.PI * theta/180;
-          var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-          dist = Math.acos(dist);
-          dist = dist * 180/Math.PI;
-          dist = dist * 60 * 1.1515;
-          dist = dist * 1.609344; // Konversi ke km
-          return dist;
-        }
-    </script>
-      
 </body>
 
 </html>

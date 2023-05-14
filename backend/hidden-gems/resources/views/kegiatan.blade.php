@@ -39,7 +39,16 @@
                     <li class="nav-item"><a class="nav-link" href="/" style="color: rgb(0,0,0);">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/tempat-wisata" style="color: #000000;">Tempat Wisata</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about-us" style="color: rgb(0,0,0);">About Us</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="signup.html" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Sign up</a>
+                </ul>
+                @if(auth()->check())
+                <a class="btn btn-primary shadow" role="button" href="/keranjang" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Keranjang</a>
+                <a class="btn btn-primary shadow" role="button" href="/logout" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Logout</a>
+                    <!-- Tampilkan sesuatu untuk user yang sudah login -->
+                    <!-- Tampilkan sesuatu untuk user yang sudah login -->
+                @else
+                    <!-- Tampilkan sesuatu untuk user yang belum login -->
+                    <a class="btn btn-primary shadow" role="button" href="/login" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Login</a>
+                @endif
             </div>
         </div>
     </nav>
@@ -91,8 +100,8 @@
                 <div class="block-heading">
                     <div class="row mb-4 mb-lg-5" style="margin-top: 48px;margin-bottom: 28px;padding-bottom: 0px;">
                         <div class="col-md-8 col-xl-6 text-center mx-auto">
-                            <h2 class="fw-bold">Rekomendasi Destinasi</h2>
-                            <p class="text-muted">Temukan Destinasi Wisata Sesuai Keinginan Anda</p>
+                            <h2 class="fw-bold">Rekomendasi Kegiatan</h2>
+                            <p class="text-muted">Temukan Kegiatan Wisata Sesuai Keinginan Anda</p>
                         </div>
                     </div>
                 </div>
@@ -105,9 +114,8 @@
                                         <h3 style="font-size: 20px;font-family: Poppins, sans-serif;font-weight: bold;">Urutkan</h3>
                                         <div id="floating-label-10" class="form-floating mb-3"><select onchange="goToPage(this)" class="form-select" for="floatinginput" placeholder="HGsOFT" style="font-family: Poppins, sans-serif;font-size: 14px;width: 224px;">
                                                 <optgroup label="This is a group" >
-                                                    <option value="1"><a href="/kegiatan/{{$tempat_pariwisata[0] ->id}}">Harga</a></option>
-                                                    <option value="2">This is item 2</option>
-                                                    <option value="3">This is item 3</option>
+                                                    <option value="/kegiatan/{{$tempat_pariwisata[0] ->id}}">Harga</option>
+                                                    <option value="/kegiatan/{{$tempat_pariwisata[0] ->id}}?sort_by=rating">Rating</option>
                                                 </optgroup>
                                             </select><label class="form-label" id="floating-label-11" for="floatinginput" style="font-family: Poppins, sans-serif;">Select ...</label></div>
                                     </div>

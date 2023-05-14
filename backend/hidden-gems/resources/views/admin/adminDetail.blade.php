@@ -98,8 +98,16 @@
                   <input name="provinsi"class="form-control"  placeholder="{{$tempat_wisatas[0] -> provinsi}}" value="{{$tempat_wisatas[0] -> provinsi}}">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                  <label >Lokasi di Map</label>
-                  <input name="location_map"class="form-control"  placeholder="{{$tempat_wisatas[0] -> location_map}}" value="{{$tempat_wisatas[0] -> location_map}}">
+                  <label >Longitude</label>
+                  <input name="longitude"class="form-control"  placeholder="longitude" value="{{$tempat_wisatas[0] -> longitude}}">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >Latitude</label>
+                  <input name="latitude"class="form-control"  placeholder="latitude" value="{{$tempat_wisatas[0] -> latitude}}">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                  <label >jenis</label>
+                  <input name="jenis"class="form-control"  placeholder="jenis"  value="{{$tempat_wisatas[0] -> jenis}}">
                 </div>
                 <div class="form-group mb-2 mt-2">
                   @php

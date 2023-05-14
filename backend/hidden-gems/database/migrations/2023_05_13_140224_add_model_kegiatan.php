@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table -> foreignId('tempat_pariwisata_id') -> constrained() -> onDelete('cascade');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->integer('harga');
             $table->string('waktu');
             $table->float('rating');

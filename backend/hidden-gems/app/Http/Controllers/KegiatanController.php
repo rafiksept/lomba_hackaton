@@ -33,6 +33,14 @@ class KegiatanController extends Controller
     public function keranjangView(){
         $userId = Auth::id();
         $charts = DB::table('charts')-> where("user_id", $userId) ->get();
+
+        if (empty($charts[0])) {
+            Chart::create([
+                'kombinasi_produk' => "0,",
+                'user_id' => $userId
+            ]);
+        } 
+        
         $produks = explode(",", $charts[0] -> kombinasi_produk);
         $counts = array_count_values($produks);
         $keys = array_keys($counts);
@@ -44,7 +52,11 @@ class KegiatanController extends Controller
         return view("keranjang",['charts' => $produkChart, 'count' => $counts]);
     }
     public function keranjangAction($id){
-        $userId = Auth::id();
+
+        if (Auth::check()) {
+            $userId = Auth::id();
+
+
         $charts = DB::table('charts')-> where("user_id", $userId) ->get();
 
         if (!empty($charts[0])) {
@@ -60,6 +72,11 @@ class KegiatanController extends Controller
         }
 
         return redirect("/keranjang");
+        } else {
+            return redirect('/login');
+        }
+
+        
 
         }
 
@@ -79,7 +96,7 @@ class KegiatanController extends Controller
 $params = array(
     'transaction_details' => array(
         'order_id' => rand(),
-        'gross_amount' => 10000,
+        'gross_amount' => $kegiatans[0] -> harga * 1.02 * $pax,
     ),
     'customer_details' => array(
         'first_name' => 'rafik',

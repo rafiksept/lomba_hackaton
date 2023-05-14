@@ -26,10 +26,19 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><img src="{{ asset('img/logo%201.png') }}" style="width: 20px;transform: scale(4.04);"><span style="margin-top: 0px;font-family: Aclonica, sans-serif;color: rgba(0,0,0,0.9);margin-left: 20px;">Lokalinaja</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto" style="transform: scale(1.14);font-family: Poppins, sans-serif;color: rgba(228,0,0,0.3);">
-                    <li class="nav-item"><a class="nav-link" href="/" style="color: rgb(0,0,0);">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/" style="color: rgb(0,0,0);">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/tempat-wisata" style="color: #000000;">Tempat Wisata</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about-us" style="color: rgb(0,0,0);">About Us</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="/login" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Login</a>
+                </ul>
+                @if(auth()->check())
+                <a class="btn btn-primary shadow" role="button" href="/keranjang" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Keranjang</a>
+                <a class="btn btn-primary shadow" role="button" href="/logout" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Logout</a>
+                    <!-- Tampilkan sesuatu untuk user yang sudah login -->
+                @else
+                    <!-- Tampilkan sesuatu untuk user yang belum login -->
+                    <a class="btn btn-primary shadow" role="button" href="/login" style="background: rgb(225,137,3);font-family: Poppins, sans-serif;color: rgb(0,0,0);">Login</a>
+                    
+                @endif
             </div>
         </div>
     </nav>
@@ -43,22 +52,27 @@
         <div>
             <div class="row" data-masonry="{&quot;percentPosition&quot;: true }">
                 <h1 data-aos="fade" data-aos-duration="2000" data-aos-delay="1300" id="heading1" style="font-family: Aclonica, sans-serif;font-weight: bold;font-size: 31px;padding-top: 0px;color: black;">YOUR DESTINATION</h1>
-                @foreach ($tempat_pariwisatas as $tempat_pariwisata)
-                <div class="col-sm-6 col-lg-4 mb-4" style="position: relative">
-                    <div class="card">
-                        @php
-                              $string = $tempat_pariwisata -> image_post;
-                              $substring = substr($string, strpos($string, 'public/') + strlen('public/'));
-                          @endphp
-                        <picture type="" srcset=""><img class="card-img-top p-3 landing-page-image" src="{{ asset('storage/'.$substring) }}" alt="" style="border-radius: 24px;object-fit: cover;"></picture>
-                        <div class="card-body">
-                            <h5 class="card-title" style="font-family: Poppins, sans-serif;font-weight: bold;">{{$tempat_pariwisata -> name}}</h5>
-                            <p class="card-text text-muted" style="font-family: Poppins, sans-serif;">{{  Illuminate\Support\Str::limit($tempat_pariwisata -> description, $limit = 100, $end = '...') }}</p>
-                            <p class="fw-bold text-dark mb-2 " id="hasil-perbandingan" style="text-align: right;color: var(--bs-danger);">loading...</p>
+                <div class="listContent" style="display: flex">
+                
+                    @foreach ($tempat_pariwisatas as $tempat_pariwisata)
+                    <div class="col-sm-6 col-lg-4 mb-4" style="position: relative">
+                        <div class="card">
+                            @php
+                                  $string = $tempat_pariwisata -> image_post;
+                                  $substring = substr($string, strpos($string, 'public/') + strlen('public/'));
+                              @endphp
+                            <picture type="" srcset=""><img class="card-img-top p-3 landing-page-image" src="{{ asset('storage/'.$substring) }}" alt="" style="border-radius: 24px;object-fit: cover; height : 300px;"></picture>
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-family: Poppins, sans-serif;font-weight: bold;">{{$tempat_pariwisata -> name}}</h5>
+                                <p class="card-text text-muted" style="font-family: Poppins, sans-serif;">{{  Illuminate\Support\Str::limit($tempat_pariwisata -> description, $limit = 100, $end = '...') }}</p>
+                                <p class="fw-bold text-dark mb-2 hasil-perbandingan" style="text-align: right;color: var(--bs-danger);">loading...</p>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
+                
+                
                 </div>
-                @endforeach
             </div><script async="" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
         </div>
         <div class="row clearmargin clearpadding row-image-txt" style="background: rgb(60,151,163);">
@@ -66,9 +80,9 @@
                 <div></div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-sm-pull-6" style="padding: 20px;">
-                <h1 style="font-family: Aclonica, sans-serif;font-weight: bold;">Heading</h1>
+                <h1 style="font-family: Aclonica, sans-serif;font-weight: bold;">Tentang Localinaja</h1>
                 <hr>
-                <p style="font-family: Poppins, sans-serif;text-align: left;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel lorem a lectus finibus bibendum ut sagittis diam. Nunc egestas nulla in elit congue, id pellentesque ex semper. Aenean euismod tellus tincidunt massa eleifend, a efficitur lectus ultricies. Aliquam bibendum et leo quis consectetur. Integer consequat consequat mauris, id porttitor sem feugiat eu. Proin ac neque eu nisi viverra mattis. Curabitur molestie lectus ac sollicitudin faucibus. Duis congue ipsum eget justo egestas blandit.</p>
+                <p style="font-family: Poppins, sans-serif;text-align: left;">Localinaja menyediakan informasi terlengkap mengenai tempat destinasi wisata dan kebudayaan hidden gems di Indonesia yang belum banyak orang tahu. Melestarikan kebudayaan Indonesia beserta menyongsong UMKM dan ekonomi Indonesia merupakan tujuan dari Localinaja.</p>
             </div>
         </div>
     </section>
@@ -77,8 +91,9 @@
             <div class="row">
                 
                 <div class="col-sm-6 col-md-7 col-lg-7">
-                    <h1 style="color: rgb(0,0,0);font-family: Aclonica, sans-serif;">Heading</h1>
-                    <p style="color: rgb(0,0,0);font-family: Poppins, sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis mauris accumsan, aliquet dui vel, rutrum dolor. Nunc vitae auctor metus. Quisque posuere nibh ut sem tincidunt, quis feugiat elit lobortis. Sed ut fringilla purus. Suspendisse volutpat ex non sem vehicula venenatis ut sed purus. Nunc eget fermentum metus, non consectetur velit. Donec semper leo a tellus posuere mollis. Duis a eleifend metus. Sed viverra enim sit amet mattis viverra. Ut euismod viverra lectus id aliquam. Cras eget odio mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ipsum nulla, vestibulum id diam eu, malesuada malesuada ex. Vestibulum et volutpat mauris. Donec sagittis sem vitae lacinia pellentesque. Ut mattis viverra aliquam. </p>
+                    <h1 style="color: rgb(0,0,0);font-family: Aclonica, sans-serif;">Apa saja yang disediakan?
+                    </h1>
+                    <p style="color: rgb(0,0,0);font-family: Poppins, sans-serif;">Localinaja menyediakan informasi mengenai berbagai destinasi wisata hidden gems beserta dengan kegiatan yang dapat dilakukan di tempat tersebut. Tiket untuk mengikuti kegiatan juga dapat dengan praktis di beli di Localinaja. </p>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-5"><img src="{{ asset('img/law-document.jpeg') }}"></div>
             </div>
@@ -118,9 +133,11 @@
         navigator.geolocation.getCurrentPosition(function(position) {
           var userLat = position.coords.latitude;
           var userLng = position.coords.longitude;
-      
+          var hitung = 0;
+
           // Melakukan perulangan untuk setiap data latitude dan longitude dari database
           @foreach($tempat_pariwisatas as $tempat_pariwisata)
+            
             var dLat = {{ $tempat_pariwisata->latitude }};
             var dLng = {{ $tempat_pariwisata->longitude }};
       
@@ -128,7 +145,9 @@
             var distance = calculateDistance(userLat, userLng, dLat, dLng);
       
             // Memeriksa apakah jaraknya kurang dari 1 km
-            document.getElementById("hasil-perbandingan").innerHTML = Math.round(distance,0) + " Km From You";
+            var documentJarak = document.querySelectorAll(".hasil-perbandingan");
+            documentJarak[hitung].innerHTML = Math.round(distance,0) + " Km From You";
+            hitung++
           @endforeach
         });
       

@@ -9,6 +9,6 @@ class TempatWisataController extends Controller
 {
     public function viewTempatWisata(){
         $tempat_pariwisatas = DB::table('tempat_pariwisatas')->get();
-        return view('tempatWisata', ['tempat_pariwisatas' => $tempat_pariwisatas]);
+        return view('tempatWisata1', ['tempat_pariwisatas' => $tempat_pariwisatas]);
     }
 }

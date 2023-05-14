@@ -11,9 +11,23 @@ use App\Models\Chart;
 class KegiatanController extends Controller
 {
     public function kegiatanView($id){
-        $kegiatans = DB::table('kegiatans')-> where("tempat_pariwisata_id", $id) ->get();
-        $tempat_pariwisata = DB::table('tempat_pariwisatas')-> where("id", $id) ->get();
-        return view("kegiatan", ['kegiatans' => $kegiatans, 'tempat_pariwisata' => $tempat_pariwisata]);
+        if (isset($_GET['sort_by'])) {
+            // Do something when the 'parameter_name' parameter is present in the URL
+            $sort_by = $_GET['sort_by'];
+        } else {
+            // Do something else when the 'parameter_name' parameter is not present in the URL
+            return redirect('/kegiatan/'.$id.'?sort_by=harga');
+        }
+
+        if ($sort_by == "harga" or $sort_by == "rating") {
+            $kegiatans = DB::table('kegiatans')-> where("tempat_pariwisata_id", $id) -> orderBy($sort_by, 'asc') ->get();
+            $tempat_pariwisata = DB::table('tempat_pariwisatas')-> where("id", $id) ->get();
+            return view("kegiatan", ['kegiatans' => $kegiatans, 'tempat_pariwisata' => $tempat_pariwisata]);
+        } else {
+            redirect('/kegiatan/{id}?sort_by=harga');
+        }
+
+        
     }
 
     public function keranjangView(){
